@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @like = true
-    if user_singed_in?
+    if user_signed_in?
       @like = current_user.likes.find_by(post_id: @post.id).nil?
     end 
   end
@@ -82,7 +82,7 @@ class PostsController < ApplicationController
     # create_commnet.js.erb  
 
     puts params[:cmtid]
-    Comment.find(params[:cmtid]).destroy
+    @c = Comment.find(params[:cmtid]).destroy
   end
 
   def like_post

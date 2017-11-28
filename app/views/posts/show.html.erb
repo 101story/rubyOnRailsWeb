@@ -33,8 +33,9 @@
   </thead>
   <tbody>
     <% @post.comments.reverse.each do |p|%>
-    <tr>
-      <td><%=p.body %><%=link_to '삭제', delete_comment_to_posts_path(cmtid: p.id), method: :delete,  id: p.id %></td>
+    <tr id="comment-<%= p.id %>">
+      <td><%= p.body %></td>
+      <td><%= link_to "삭제", delete_comment_to_posts_path(p.id), method: :delete, data: {confirm: "삭제하시겠습니까?"}, class: "btn btn-danger", remote: true %></td>
     </tr>
     <% end %>
   </tbody>
