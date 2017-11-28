@@ -8,9 +8,14 @@
 
 require 'faker'
 
-100.times do 
-    Post.create(
-        title: Faker::Name.title,
-        content: Faker::Lorem.sentence
-    )
-end
+# 100.times do 
+#     Post.create(
+#         title: Faker::Name.title,
+#         content: Faker::Lorem.sentence
+#     )
+# end
+
+Post.create(
+    title:"test1",
+    content: "contents1"    
+)

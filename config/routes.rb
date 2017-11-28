@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
   
+  devise_for :users
   root 'posts#index'
-  resources :posts
+  resources :posts do
+    member do 
+      post '/create_comment' => 'posts#create_comment', as: 'create_comment_to'
+      post '/like_post' => 'posts#like_post', as: 'like_to'
+    end
+    collection do 
+      delete '/:cmtid/delete_comment' => 'posts#delete_comment', as: 'delete_comment_to' 
+    end
+  end
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
